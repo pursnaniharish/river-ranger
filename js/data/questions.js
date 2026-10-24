@@ -1,0 +1,377 @@
+// Levels, question banks and game content. All facts come from the
+// Massachusetts Stream Crossings Handbook (DER, 2nd ed. 2012, reprinted 2018).
+// Multiple-choice convention: options[0] is the correct answer (shuffled on screen).
+window.RR_DATA = window.RR_DATA || {};
+
+RR_DATA.crossingTypes = [
+  { key: 'bridge', name: 'Bridge', good: true,
+    text: 'Spans the whole stream and its banks. It’s the top choice: the Optimum Standard says “use a bridge”!' },
+  { key: 'arch', name: 'Open-bottom arch', good: true,
+    text: 'A big arch with no floor, so the natural streambed runs right through it.' },
+  { key: 'box3', name: '3-sided box culvert', good: true,
+    text: 'A box with a roof and two walls but no floor. It sits on footings, so the real streambed stays.' },
+  { key: 'embedded', name: 'Embedded box culvert', good: true,
+    text: 'A box culvert sunk (embedded) at least 2 feet into the streambed and covered with natural rocks.' },
+  { key: 'pipe', name: 'Round pipe culvert', good: false,
+    text: 'A small round pipe. It’s often undersized, with a slippery metal floor and thin water.' },
+  { key: 'doublebox', name: 'Double box culvert', good: false,
+    text: 'Two small boxes side by side. The middle wall catches debris and the water gets shallow.' },
+  { key: 'perched', name: 'Perched culvert', good: false,
+    text: 'Its outlet hangs above the stream, making a waterfall that fish can’t jump.' },
+  { key: 'slipline', name: 'Sliplined pipe', good: false,
+    text: 'A smaller pipe slid inside an old one. It shrinks the opening and speeds up the water, so it’s strongly discouraged!' }
+];
+
+RR_DATA.banks = {
+  l1: [
+    { id: 'l1-culvert', q: 'What is a <b>culvert</b>?',
+      options: ['A pipe or tunnel that lets a stream flow under a road', 'A kind of river fish', 'A wall that blocks a river', 'A boat for crossing streams'],
+      tip: 'Culverts and bridges are both stream crossings: places where roads cross streams.' },
+    { id: 'l1-continuity', q: 'What does <b>stream continuity</b> mean?',
+      options: ['The stream stays connected so animals can move freely', 'The stream never runs dry', 'The water flows in a circle', 'The stream is very, very long'],
+      tip: 'River Rangers protect stream continuity: streams connected from end to end.' },
+    { id: 'l1-coldwater', q: 'Why do brook trout swim to small streams with springs in summer?',
+      options: ['To find cold water', 'To find warm water', 'To meet people', 'To hide from the rain'],
+      tip: 'Springs and groundwater seeps make coldwater refuges. Trout that are blocked can suffer heat stress.' },
+    { id: 'l1-anadromous', q: '<b>Anadromous</b> fish…',
+      options: ['live in the ocean but swim up rivers to spawn', 'live only in ponds', 'never leave one spot', 'live in trees'],
+      tip: 'Atlantic salmon, alewife, shad, lamprey and sea-run trout are all anadromous.' },
+    { id: 'l1-which-anad', q: 'Which of these is an anadromous fish?',
+      options: ['Alewife', 'Crayfish', 'Wood turtle', 'Caddisfly'],
+      tip: 'Alewives swim from the sea up rivers every spring, and people celebrate their return!' },
+    { id: 'l1-mussel', q: 'How do baby freshwater mussels travel upstream?',
+      options: ['They ride on the fins of fish', 'They fly', 'They ride on turtles’ backs', 'They walk along the road'],
+      tip: 'If a crossing blocks the fish, it blocks the mussels too!' },
+    { id: 'l1-turtle', q: 'What can happen to a wood turtle at a poorly designed crossing?',
+      options: ['It has to climb onto the road, where cars and predators are dangers', 'It gets a free ride', 'Nothing at all', 'It swims faster'],
+      tip: 'Good crossings give turtles, salamanders and frogs a safe route under the road. A wood turtle can’t even climb a curb!' },
+    { id: 'l1-riparian', q: 'The <b>riparian</b> area is…',
+      options: ['the land along the banks of a stream', 'the bottom of the ocean', 'the top of a mountain', 'the inside of a pipe'],
+      tip: 'Riparian animals like turtles, salamanders and otters live along stream banks.' },
+    { id: 'l1-roads', q: 'Imagine the roads you use every day were blocked forever. That is like…',
+      options: ['what bad crossings do to stream animals', 'a fun holiday', 'a new playground', 'a traffic light'],
+      tip: 'Animals need to reach food, cold water and places to lay eggs, just like you need to reach school and home.' },
+    { id: 'l1-der', q: 'Who made the Massachusetts Stream Crossings Handbook?',
+      options: ['DER, the Division of Ecological Restoration', 'NASA', 'The Weather Service', 'A pizza company'],
+      tip: 'DER is part of the Massachusetts Department of Fish & Game. It restores rivers, wetlands and watersheds.' },
+    { id: 'l1-biodiversity', q: 'What does <b>biodiversity</b> mean?',
+      options: ['The variety of living things in a place', 'A type of culvert', 'Just one kind of animal', 'A map of roads'],
+      tip: 'Connected streams help many kinds of animals survive, from caddisflies to otters.' },
+    { id: 'l1-count', q: 'In just one small part of the South River watershed, about how many stream crossings are there?',
+      options: ['Nearly 50', 'Only 2', 'Exactly 1', 'None'],
+      tip: 'Lots of crossings means lots of chances to block wildlife, or to help it!' },
+    { id: 'l1-who', q: 'Which animals need connected streams?',
+      options: ['All of them: insects, crayfish, fish, salamanders, turtles and mammals', 'Only big fish', 'Only birds', 'None, because animals stay in one spot'],
+      tip: 'The handbook says stream protection must consider the needs of all species.' }
+  ],
+
+  l3: [
+    { id: 'l3-bridge', type: 'thumbs', good: true, svg: { key: 'bridge', o: { fish: true } },
+      tip: 'A bridge spans the stream and its banks. Animals can swim or walk right under it.' },
+    { id: 'l3-arch', type: 'thumbs', good: true, svg: { key: 'arch', o: { fish: true } },
+      tip: 'An open-bottom arch keeps the natural streambed, so it’s almost “invisible” to fish.' },
+    { id: 'l3-box3', type: 'thumbs', good: true, svg: { key: 'box3', o: { fish: true } },
+      tip: 'This 3-sided box has no floor, so the real rocks and gravel stay in place.' },
+    { id: 'l3-embedded', type: 'thumbs', good: true, svg: { key: 'embedded' },
+      tip: 'This culvert is sunk into the streambed and covered with natural rocks. Nice embedment!' },
+    { id: 'l3-widearch', type: 'thumbs', good: true, svg: { key: 'arch', o: { w: 1.25, h: 1.05 } },
+      tip: 'Wide, tall and bright, with dry banks inside for otters and turtles to walk on.' },
+    { id: 'l3-perched', type: 'thumbs', good: false, svg: { key: 'perched' },
+      tip: 'The outlet is perched above the stream. Fish would have to leap up a waterfall!' },
+    { id: 'l3-pond', type: 'thumbs', good: false, svg: { key: 'pipe', o: { pond: true, pondY: 84 } },
+      tip: 'This tiny pipe is undersized. Water backs up into a pond and could overtop the road.' },
+    { id: 'l3-shallow', type: 'thumbs', good: false, svg: { key: 'pipe' },
+      tip: 'The water is too shallow and the floor is bare metal. Fish and crayfish can’t get through.' },
+    { id: 'l3-clog', type: 'thumbs', good: false, svg: { key: 'pipe', o: { debris: true } },
+      tip: 'Sticks and leaves clog small pipes and block animals. It also means costly cleanups.' },
+    { id: 'l3-double', type: 'thumbs', good: false, svg: { key: 'doublebox' },
+      tip: 'Two small boxes with a concrete floor make the water shallow, and the middle wall catches debris.' },
+    { id: 'l3-slipline', type: 'thumbs', good: false, svg: { key: 'slipline' },
+      tip: 'A pipe slid inside a pipe (sliplining) shrinks the opening and makes the water rush.' },
+    { id: 'l3-corrugated', type: 'thumbs', good: false, svg: { key: 'corrugated' },
+      tip: 'This corrugated pipe is too small. Water rushes through too fast for fish to swim against.' },
+    { id: 'l3-concrete', type: 'thumbs', good: false, svg: { key: 'box3', o: { bed: 'concrete', water: 'low', w: 0.7 } },
+      tip: 'There are no rocks inside, just smooth concrete and thin water. That isn’t a natural streambed.' }
+  ],
+
+  l6: [
+    { id: 'l6-velocity', q: 'What kind of crossing causes <b>high flow velocity</b> (super-fast water)?',
+      options: ['Undersized crossings', 'Bridges', 'Open-bottom arches', 'Wide, natural crossings'],
+      tip: 'Squeezing a stream into a small opening makes the water rush, and fish can’t swim against it.' },
+    { id: 'l6-clog', q: 'Which crossings get <b>clogged</b> with sticks and leaves most often?',
+      options: ['Undersized crossings', 'Big bridges', 'Wide open arches', 'Crossings that span the banks'],
+      tip: 'Clogging means costly cleanups, and it can make a crossing impassable to wildlife.' },
+    { id: 'l6-lowflow', q: '<b>Low flow</b> (water too shallow) is caused by…',
+      options: ['shallow and perched crossings', 'bridges', 'big storms only', 'open-bottom arches'],
+      tip: 'Fish need enough water depth to move through a crossing.' },
+    { id: 'l6-bed', q: 'Why are metal and concrete floors bad inside a crossing?',
+      options: ['Animals that travel along the bottom need natural rocks and gravel', 'They are too shiny', 'They make the water warm', 'Fish love metal'],
+      tip: 'The substrate should match the stream above and below the crossing.' },
+    { id: 'l6-pond', q: '<b>Ponding</b> behind an undersized crossing can cause…',
+      options: ['property damage, erosion and big habitat changes', 'more cold water for trout', 'nothing at all', 'smaller floods'],
+      tip: 'Ponding is an unnatural backup of water upstream of a crossing.' },
+    { id: 'l6-scour', q: 'Where do <b>scour pools</b> often form?',
+      options: ['Below perched culverts', 'On top of bridges', 'Inside trees', 'In parking lots'],
+      tip: 'Scour pools can even undercut the culvert itself.' }
+  ],
+
+  l7: [
+    { id: 'l7-embed', q: 'How deep should culverts be <b>embedded</b> (sunk) into the streambed?',
+      options: ['At least 2 feet', '2 inches', '20 feet', 'Not at all'],
+      tip: 'Embedding lets natural rocks cover the floor, just like the stream.' },
+    { id: 'l7-pipe25', q: 'Round pipe culverts should be embedded at least…',
+      options: ['25% of their height', '1% of their height', '90% of their height', '0%. Just sit them on top'],
+      tip: 'If pipe culverts can’t be embedded this deep, they should not be used.' },
+    { id: 'l7-span', q: 'A crossing should span at least ___ the bankfull width.',
+      options: ['1.2 times', 'half', 'one-tenth', 'the width of a car'],
+      tip: 'Spanning 1.2 × the bankfull width keeps the crossing from squeezing the stream.' },
+    { id: 'l7-openness', q: 'The <b>openness ratio</b> is…',
+      options: ['the opening’s cross-section area divided by its length', 'how many fish fit inside', 'the color of the culvert', 'the road’s speed limit'],
+      tip: 'A crossing should be wide and high compared to its length.' },
+    { id: 'l7-general-open', q: 'Under the General Standards, the openness ratio should be at least…',
+      options: ['0.82 feet (0.25 m)', '0.01 feet', '100 feet', 'It doesn’t matter'],
+      tip: 'Optimum is even bigger: 1.64 feet (0.5 m) and at least 6 feet tall.' },
+    { id: 'l7-optimum-type', q: 'What do the <b>Optimum Standards</b> say is the best type of crossing?',
+      options: ['A bridge', 'A small round pipe', 'A double box culvert', 'A sliplined pipe'],
+      tip: 'The General Standards strongly prefer spans, and the Optimum Standards say to use a bridge.' },
+    { id: 'l7-height', q: 'Under the Optimum Standards, a crossing should be at least how tall?',
+      options: ['6 feet (8 feet near busy roads or steep banks)', '6 inches', '1 foot', '100 feet'],
+      tip: 'Tall crossings with dry banks let mammals and turtles walk through.' },
+    { id: 'l7-where-opt', q: 'Where should the Optimum Standards be used?',
+      options: ['Streams with rare or endangered species or important wildlife connections', 'Parking lots', 'Swimming pools', 'Nowhere'],
+      tip: 'All new crossings must meet at least the General Standards.' },
+    { id: 'l7-slipline', q: 'Is <b>sliplining</b> (sliding a smaller pipe inside an old one) a good fix?',
+      options: ['No. It shrinks the opening and speeds up the water', 'Yes, it’s the best fix', 'Only on Tuesdays', 'Yes, fish love tiny pipes'],
+      tip: 'The handbook strongly discourages sliplining.' },
+    { id: 'l7-water', q: 'Inside a good crossing, water depth and speed should be…',
+      options: ['about the same as the natural stream', 'much faster', 'much shallower', 'completely dry'],
+      tip: 'They should match the natural stream at all kinds of flows: low, normal and high.' }
+  ],
+
+  // Only used in the Big Storm review.
+  extra: [
+    { id: 'x-replace', q: 'A culvert is rusty, falling apart and too small for floods. What should the town do?',
+      options: ['Replace it', 'Retrofit it with a few rocks', 'Leave it alone', 'Paint it'],
+      tip: 'Replace crossings that are structurally poor or undersized for high flows.' },
+    { id: 'x-retrofit', q: 'When might a <b>retrofit</b> be a good idea?',
+      options: ['When the crossing is sound and already big enough for floods', 'When the crossing is crumbling', 'When it is way too small', 'Never'],
+      tip: 'At Cummington Road, a big, sound culvert was retrofitted with a riffle and retention sills to fix perching.' },
+    { id: 'x-bronson', q: 'What replaced the failed double box culvert on Bronson Brook?',
+      options: ['A 40-foot-wide open-bottom arch', 'A smaller pipe', 'A dam', 'Nothing'],
+      tip: 'The arch spans the bankfull channel and keeps a natural streambed for salmon, brook trout and dace.' },
+    { id: 'x-shaker', q: 'MassDOT engineers won which award for the wildlife-friendly Shaker Mill Brook crossing?',
+      options: ['The Conservation Hero Award', 'The Fastest Road Award', 'The Best Pipe Prize', 'The Golden Culvert Cup'],
+      tip: 'Now trout, turtles, wood ducks, otters and mink pass freely under McNerney Road.' },
+    { id: 'x-phrag', q: 'Tidal restrictions can help which invasive plant spread in salt marshes?',
+      options: ['Phragmites (common reed)', 'Sunflowers', 'Oak trees', 'Seaweed'],
+      tip: 'A bigger culvert or bridge restores natural tides and healthy marshes.' },
+    { id: 'x-irene', q: 'After Tropical Storm Irene, how did culverts built with Stream Simulation Design do?',
+      options: ['They had little damage and passed huge amounts of water and debris', 'They all washed away', 'They turned into ponds', 'They were never tested'],
+      tip: 'Crossings designed with rivers in mind are good for wildlife and for town budgets.' },
+    { id: 'x-invisible', q: 'Good crossings should be ___ to fish and wildlife.',
+      options: ['“invisible”', 'scary', 'noisy', 'slippery'],
+      tip: 'They keep natural flow and substrate, so animals hardly notice the road.' },
+    { id: 'x-cost', q: 'An open arch or bridge costs more to build at first. Why is it still a smart choice?',
+      options: ['It survives big storms and needs little maintenance, saving money later', 'It is shinier', 'Fish pay a toll', 'It never needs to be built'],
+      tip: 'Culvert failures cost communities millions of dollars every year.' },
+    { id: 'x-overtop', q: 'When floodwater rises and pours over the road at a crossing, the crossing has…',
+      options: ['overtopped', 'embedded', 'retrofitted', 'spawned'],
+      tip: 'Undersized and clogged crossings are more likely to overtop in big storms.' },
+    { id: 'x-headcut', q: 'Erosion that creeps upstream and cuts the streambed deeper is called a…',
+      options: ['headcut', 'haircut', 'riffle', 'span'],
+      tip: 'Checking the longitudinal profile helps prevent headcuts when a culvert is replaced.' },
+    { id: 'x-profile', q: 'A <b>longitudinal profile</b> measures…',
+      options: ['the slope of the streambed upstream and downstream', 'how many fish live there', 'the color of the water', 'how fast cars drive'],
+      tip: 'The slope and height of the streambed should connect smoothly through the crossing.' },
+    { id: 'x-chum', q: 'In Washington state, a chum salmon was photographed doing something amazing because its crossing was blocked by floodwater. What?',
+      options: ['Swimming across the road!', 'Riding a bike', 'Climbing a tree', 'Flying'],
+      tip: 'When crossings fail, animals end up in dangerous places.' },
+    { id: 'x-tidal', q: 'Are the Stream Crossing Standards made for salty, tidal creeks?',
+      options: ['No. They are for freshwater, non-tidal streams', 'Yes, only for the ocean', 'Only for swimming pools', 'Only for lakes'],
+      tip: 'Tidal crossings need special designs for tides that flow both ways and for storm surges.' }
+  ]
+};
+
+RR_DATA.sortBins = [
+  { id: 'under', name: 'Undersized', emoji: '🤏', hint: 'too small' },
+  { id: 'shallow', name: 'Shallow', emoji: '💧', hint: 'water too thin' },
+  { id: 'perched', name: 'Perched', emoji: '🧗', hint: 'hangs above stream' }
+];
+
+RR_DATA.sortItems = [
+  { id: 's-u1', bin: 'under', text: 'The crossing is too small to carry big storm flows.',
+    tip: 'Crossings should be big enough to pass fish, wildlife and high flows.' },
+  { id: 's-u2', bin: 'under', text: 'Water squeezes through super fast, and fish can’t swim against it.',
+    tip: 'High flow velocity is caused by undersized crossings.' },
+  { id: 's-u3', bin: 'under', text: 'Sticks and leaves keep jamming the opening.',
+    tip: 'Undersized crossings clog easily and need costly maintenance.' },
+  { id: 's-u4', bin: 'under', text: 'Water backs up into a big pond behind the road.',
+    tip: 'Ponding happens upstream of undersized crossings.' },
+  { id: 's-u5', bin: 'under', text: 'In a flood, the road washed out.',
+    tip: 'Undersized crossings can be overwhelmed by floods and wash out.' },
+  { id: 's-s1', bin: 'shallow', text: 'The water inside is too thin for fish to swim through.',
+    tip: 'Shallow crossings don’t have enough water depth for animals.' },
+  { id: 's-s2', bin: 'shallow', text: 'There are no rocks or gravel inside, just a bare floor.',
+    tip: 'Shallow crossings may lack natural bed material.' },
+  { id: 's-s3', bin: 'shallow', text: 'The culvert sits on top of the streambed instead of being buried in it, so the water inside is ankle-deep.',
+    tip: 'Fix it with an open bottom, or bury the culvert into the streambed.' },
+  { id: 's-p1', bin: 'perched', text: 'The outlet sticks out above the stream like a ledge.',
+    tip: 'Perched crossings sit above the stream bottom at the downstream end.' },
+  { id: 's-p2', bin: 'perched', text: 'Fish would have to leap up a waterfall to get in.',
+    tip: 'Most fish, salamanders and crayfish can’t make that jump.' },
+  { id: 's-p3', bin: 'perched', text: 'Years of erosion lowered the streambed below the pipe.',
+    tip: 'Perching can come from a bad installation or from years of downstream erosion.' },
+  { id: 's-p4', bin: 'perched', text: 'A deep scour pool has formed right under the outlet.',
+    tip: 'Scour pools often form below perched culverts.' }
+];
+
+// Build a Super Crossing: every option in a step sets the same design keys.
+RR_DATA.buildSteps = [
+  { id: 'b-type', standard: 'Standard 1: Type of crossing',
+    q: 'The town can’t afford a bridge here. What shape should the new crossing be?',
+    options: [
+      { label: 'An open-bottom arch', ok: true, key: 'arch', set: { w: 0.6, h: 0.5, bed: 'concrete', water: 'fast' },
+        caption: 'An arch! Now let’s size it…', tip: 'Spans like open-bottom arches and 3-sided boxes are strongly preferred. (A bridge would be optimum!)' },
+      { label: 'A smaller round pipe', key: 'pipe', set: { w: 0.32, h: 1, bed: 'metal', water: 'fast' },
+        caption: 'A tiny pipe 😬', tip: 'Small pipes are often undersized and shallow. Pick a span!' },
+      { label: 'A double box culvert', key: 'doublebox', set: { w: 0.6, h: 1, bed: 'concrete', water: 'low' },
+        caption: 'Two little boxes 😕', tip: 'The middle wall catches debris and the water gets shallow. Pick a span!' }
+    ] },
+  { id: 'b-span', standard: 'Standard 3: Crossing span',
+    q: 'How wide should it be?',
+    options: [
+      { label: 'Half as wide as the stream', set: { w: 0.5 }, caption: 'Too narrow! The stream is squeezed.',
+        tip: 'A narrow crossing squeezes the stream and makes the water rush.' },
+      { label: 'Exactly as wide as the stream', set: { w: 1 }, caption: 'Close, but there’s no room for the banks.',
+        tip: 'Close! It needs to be a bit wider than the stream.' },
+      { label: 'At least 1.2 × the bankfull width', ok: true, set: { w: 1.2 }, caption: 'Wide enough for the stream and its banks!',
+        tip: 'At least 1.2 times the bankfull width. That’s the General Standard.' }
+    ] },
+  { id: 'b-open', standard: 'Standard 4: Openness',
+    q: 'How open should it be?',
+    options: [
+      { label: 'Low and dark, with an openness ratio of 0.1 m', set: { h: 0.35 }, caption: 'So dark! Animals won’t go in.',
+        tip: 'That’s too low and dark. Animals avoid dark tunnels.' },
+      { label: 'Big and bright, with an openness ratio of at least 0.25 m (0.82 ft)', ok: true, set: { h: 0.8 }, caption: 'Bright and open!',
+        tip: 'The General Standard is an openness of at least 0.82 ft (0.25 m), so the crossing is wide and high compared to its length.' },
+      { label: 'Openness doesn’t matter', set: { h: 0.5 }, caption: 'Hmm, pretty cramped…',
+        tip: 'Openness matters! Animals need to see light at the other end.' }
+    ] },
+  { id: 'b-bed', standard: 'Standard 5: Substrate',
+    q: 'What should the bottom be made of?',
+    options: [
+      { label: 'Smooth concrete', set: { bed: 'concrete' }, caption: 'Bare concrete, with no hiding spots.',
+        tip: 'Concrete isn’t natural. Crayfish and insects need rocks.' },
+      { label: 'Natural rocks and gravel that match the stream', ok: true, set: { bed: 'natural' }, caption: 'A natural streambed!',
+        tip: 'Use a natural substrate that matches the stream upstream and downstream.' },
+      { label: 'Slippery metal', set: { bed: 'metal' }, caption: 'A slippery metal floor 😬',
+        tip: 'Metal isn’t an appropriate bed material for animals.' }
+    ] },
+  { id: 'b-water', standard: 'Standard 6: Water depth & velocity',
+    q: 'How should the water flow through it?',
+    options: [
+      { label: 'Faster and shallower than the stream', set: { water: 'fast' }, caption: 'Whoosh! Too fast.',
+        tip: 'Fast, thin water blocks fish.' },
+      { label: 'The same depth and speed as the natural stream', ok: true, set: { water: 'normal' }, caption: 'Just like the real stream!',
+        tip: 'Depth and speed should match the natural channel at all kinds of flows.' },
+      { label: 'Totally dry', set: { water: 'dry' }, caption: 'No water? Fish can’t swim!',
+        tip: 'Fish need water to swim through!' }
+    ] },
+  { id: 'b-height', standard: 'Optimum Standard: Wildlife passage',
+    q: 'This stream has otters and wood turtles. How tall should the crossing be?',
+    options: [
+      { label: 'At least 6 feet tall, with dry banks to walk on', ok: true, set: { h: 1.05 }, caption: 'Room for otters and turtles to walk through!',
+        tip: 'The Optimum Standard is at least 6 feet tall (8 feet near busy roads), with dry passage.' },
+      { label: 'Just tall enough for the water', set: { h: 0.55 }, caption: 'No room for walkers.',
+        tip: 'Mammals and turtles need headroom and dry banks.' },
+      { label: 'Animals can just cross the road', set: { h: 0.8 }, caption: '🚗 Uh-oh, turtles on the road!',
+        tip: 'Roads are dangerous! Turtles can get hit by cars.' }
+    ] }
+];
+
+RR_DATA.levels = [
+  { id: 1, title: 'Meet the Stream', icon: '🏞️',
+    intro: 'Streams are highways for animals! Read these cards, then answer my questions.',
+    learn: [
+      { emoji: '🛣️', title: 'Streams are animal highways', text: 'Fish, turtles, salamanders, crayfish and otters travel up and down streams to find food, cold water and places to lay eggs.' },
+      { emoji: '🚧', title: 'Some crossings block the way', text: 'Where roads cross streams, we build bridges and culverts. A bad culvert is like a road that is closed forever!' },
+      { emoji: '🔗', title: 'Stream continuity', text: 'A connected stream, where animals can move freely, has stream continuity. That’s what River Rangers protect!' },
+      { emoji: '🏛️', title: 'Who helps?', text: 'Massachusetts’ DER (Division of Ecological Restoration) wrote the Stream Crossings Handbook to help towns build better crossings.' }
+    ],
+    stages: [{ game: 'quiz', bank: 'l1', n: 8 }],
+    badge: { id: 'explorer', name: 'Stream Explorer', emoji: '🧭', desc: 'Fix crossing 1: Meet the Stream' },
+    cards: ['brooktrout', 'alewife'] },
+  { id: 2, title: 'Name That Crossing', icon: '🔎',
+    intro: 'There are lots of kinds of crossings. Study them, then name them!',
+    learnTypes: true,
+    stages: [{ game: 'quiz', bank: 'l2', n: 8 }],
+    badge: { id: 'spotter', name: 'Crossing Spotter', emoji: '🔎', desc: 'Fix crossing 2: Name That Crossing' },
+    cards: ['dace', 'salmon'] },
+  { id: 3, title: 'Good or Not-So-Good?', icon: '👍',
+    intro: 'Can you tell a wildlife-friendly crossing from a problem one? Look closely at each picture!',
+    learn: [
+      { svg: { key: 'arch', o: { fish: true } }, title: 'A good crossing…', text: '✔ spans the stream and banks ✔ keeps the water speed like the stream ✔ has a natural streambed ✔ makes no noticeable change in the river' },
+      { svg: { key: 'perched' }, title: 'Warning signs', text: 'Waterfalls at the outlet, tiny pipes, bare metal or concrete floors, thin or rushing water, piles of sticks, ponds backing up.' },
+      { emoji: '👻', title: 'Be “invisible”!', text: 'The best crossings are “invisible” to fish and wildlife. They hardly notice the road is there.' }
+    ],
+    stages: [{ game: 'quiz', bank: 'l3', n: 9 }],
+    badge: { id: 'critic', name: 'Culvert Detective', emoji: '🕵️', desc: 'Fix crossing 3: Good or Not-So-Good?' },
+    cards: ['crayfish', 'caddisfly'] },
+  { id: 4, title: 'Critter Rescue', icon: '🐢',
+    intro: 'Lots of critters depend on connected streams. Learn why they travel, then match them to their clues!',
+    learn: [
+      { emoji: '❄️', title: 'Cold water', text: 'In summer, brook trout swim to cold springs. Fish that are blocked can overheat.' },
+      { emoji: '🍽️', title: 'Food', text: 'Striped bass and sea-run trout swim up tidal creeks at high tide to feed.' },
+      { emoji: '🥚', title: 'Spawning', text: 'Anadromous fish like salmon, alewife, shad and lamprey swim from the ocean to spawn in rivers.' },
+      { emoji: '🐢', title: 'Spreading out', text: 'Turtles, salamanders and frogs travel along streams. Baby mussels even ride on fish fins!' }
+    ],
+    stages: [{ game: 'pairs', rounds: 2, size: 4 }],
+    badge: { id: 'hero', name: 'Critter Hero', emoji: '🦸', desc: 'Fix crossing 4: Critter Rescue' },
+    cards: ['woodturtle', 'mussel'] },
+  { id: 5, title: 'Jargon Jungle', icon: '🌴',
+    intro: 'Rangers speak a special language! Learn these words, play memory, then take the word quiz.',
+    learnTerms: ['DER', 'SCS', 'Overtop', 'Riparian', 'Culvert', 'Stream continuity'],
+    stages: [
+      { game: 'memory', pairs: 6, scored: false, terms: ['DER', 'SCS', 'Overtop', 'Riparian'] },
+      { game: 'quiz', bank: 'jargon', n: 8 }
+    ],
+    badge: { id: 'genius', name: 'Jargon Genius', emoji: '🧠', desc: 'Fix crossing 5: Jargon Jungle' },
+    cards: ['salamander', 'eel'] },
+  { id: 6, title: 'Problem Detective', icon: '🧩',
+    intro: 'Bad crossings come in three kinds. Learn their clues, then sort the evidence!',
+    learn: [
+      { svg: { key: 'pipe', o: { pond: true, pondY: 90 } }, title: '🤏 Undersized', text: 'It’s too small! It causes fast water, scouring, clogging and ponding, and it can wash out in floods.' },
+      { svg: { key: 'doublebox' }, title: '💧 Shallow', text: 'The water is too thin to swim in, with no natural rocks. Fix: use an open bottom, or bury the culvert into the streambed.' },
+      { svg: { key: 'perched' }, title: '🧗 Perched', text: 'The outlet hangs above the stream. It’s caused by a bad installation or by years of erosion below.' }
+    ],
+    stages: [{ game: 'sort', n: 8 }, { game: 'quiz', bank: 'l6', n: 4 }],
+    badge: { id: 'detective', name: 'Problem Solver', emoji: '🧩', desc: 'Fix crossing 6: Problem Detective' },
+    cards: ['shad', 'lamprey'] },
+  { id: 7, title: 'Build a Super Crossing', icon: '🏗️',
+    intro: 'Time to be the engineer! Here are the six Stream Crossing Standards. Use them to rebuild an old rusty pipe.',
+    learn: [
+      { emoji: '1️⃣', title: 'Type', text: 'Spans (bridges, 3-sided boxes, open-bottom arches) are best. Optimum: use a bridge!' },
+      { emoji: '2️⃣', title: 'Embedment', text: 'Sink culverts at least 2 feet into the streambed (round pipes at least 25%).' },
+      { emoji: '3️⃣', title: 'Span', text: 'Make it at least 1.2 × the bankfull width of the stream.' },
+      { emoji: '4️⃣', title: 'Openness', text: 'At least 0.82 ft (0.25 m). Optimum: 1.64 ft (0.5 m) and 6 feet tall.' },
+      { emoji: '5️⃣', title: 'Substrate', text: 'Use natural rocks that match the stream above and below.' },
+      { emoji: '6️⃣', title: 'Water depth & speed', text: 'Keep them like the natural stream, at all kinds of flows.' }
+    ],
+    stages: [{ game: 'builder' }, { game: 'quiz', bank: 'l7', n: 5 }],
+    badge: { id: 'builder', name: 'Master Builder', emoji: '🏗️', desc: 'Fix crossing 7: Build a Super Crossing' },
+    cards: ['otter', 'mink'] },
+  { id: 8, title: 'The Big Storm', icon: '⛈️', boss: true,
+    intro: 'A huge storm is coming! Answer questions from every crossing to keep the road from overtopping.',
+    learn: [
+      { emoji: '🛡️', title: '3 flood shields', text: 'Each wrong answer raises the floodwater and costs a shield. Lose all 3 and the road overtops!' },
+      { emoji: '💪', title: 'Why it matters', text: 'Crossings built to the standards survived Tropical Storm Irene with little damage, while old culverts clogged and failed.' }
+    ],
+    stages: [{ game: 'quiz', bank: 'storm', n: 10, lives: 3 }],
+    badge: { id: 'storm', name: 'Storm Survivor', emoji: '⛈️', desc: 'Survive the Big Storm' },
+    cards: ['searun', 'stripedbass', 'muskrat', 'woodduck'] }
+];
+
+RR_DATA.extraBadges = [
+  { id: 'hotstreak', name: 'Hot Streak', emoji: '🔥', desc: 'Get 5 answers right in a row' },
+  { id: 'superranger', name: 'Super Ranger', emoji: '🌟', desc: 'Earn all 24 stars' }
+];

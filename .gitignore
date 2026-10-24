@@ -1,0 +1,5 @@
+# Source handbook: its artwork can't be reproduced without permission.
+*.pdf
+
+# Local Claude Code settings (preview server config)
+.claude/

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>River Ranger</title>
+  <meta name="description" content="A game for kids about culverts, stream crossings and biodiversity, based on the Massachusetts Stream Crossings Handbook.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-go="home" aria-label="River Ranger home">
+      <span class="brand-fish" id="brand-fish" aria-hidden="true"></span>
+      <span class="brand-text">River Ranger</span>
+    </button>
+    <div class="tb-stats">
+      <span class="chip" title="Stars">⭐ <b id="tb-stars">0</b></span>
+      <span class="chip" title="Points">✨ <b id="tb-points">0</b></span>
+    </div>
+    <nav class="tb-nav" aria-label="Main">
+      <button data-go="map"><span aria-hidden="true">🗺️</span><span class="lbl">Map</span></button>
+      <button data-go="guide"><span aria-hidden="true">📖</span><span class="lbl">Field Guide</span></button>
+      <button data-go="backpack"><span aria-hidden="true">🎒</span><span class="lbl">Backpack</span></button>
+      <button id="tb-sound" aria-label="Turn sound off"><span aria-hidden="true">🔊</span></button>
+      <button id="tb-settings" aria-label="Settings"><span aria-hidden="true">⚙️</span></button>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+  <noscript><p class="noscript">River Ranger needs JavaScript turned on to play.</p></noscript>
+
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/data/glossary.js"></script>
+  <script src="js/data/species.js"></script>
+  <script src="js/data/questions.js"></script>
+  <script src="js/svg.js"></script>
+  <script src="js/games/quiz.js"></script>
+  <script src="js/games/match.js"></script>
+  <script src="js/games/sort.js"></script>
+  <script src="js/games/builder.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
